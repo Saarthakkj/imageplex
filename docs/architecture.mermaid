@@ -1,0 +1,84 @@
+flowchart TD
+    subgraph Input
+        A[Image Input]
+    end
+
+    subgraph "Entity Extraction"
+        B1[Textual Entity Extraction]
+        B2[Visual Entity Detection]
+        B1_1[OCR with GPU Acceleration]
+        B1_2[NLP Entity Linking]
+        B2_1[YOLOv8 Object Detection]
+        B2_2[cuGraph Spatial Analysis]
+        
+        B1 --> B1_1
+        B1 --> B1_2
+        B2 --> B2_1
+        B2 --> B2_2
+    end
+    
+    subgraph "ArangoDB Graph Construction"
+        C1[Schema Design]
+        C2[Batch Graph Insertion]
+        C3[ArangoDB Graph Database]
+        
+        C1 --> C2
+        C2 --> C3
+    end
+    
+    subgraph "GraphRAG Implementation"
+        D1[Hybrid Query Decomposition]
+        D2[LangGraph Workflow]
+        D3[Query Parsing]
+        D4[AQL Generation]
+        D5[cuGraph Analysis]
+        D6[Community Detection Pipeline]
+        
+        D1 --> D2
+        D2 --> D3
+        D3 --> D4
+        D4 --> D5
+        D5 --> D6
+    end
+    
+    subgraph "Query Execution & Evaluation"
+        E1[Graph-only Queries]
+        E2[Vector-only Queries]
+        E3[Hybrid Queries]
+        E4[Performance Benchmarking]
+        E5[Results Evaluation]
+        
+        E1 --> E4
+        E2 --> E4
+        E3 --> E4
+        E4 --> E5
+    end
+    
+    subgraph "Optimization & Integration"
+        F1[ArangoDB Optimization]
+        F2[cuGraph Memory Management]
+        F3[LangChain Integration]
+        F4[LangChain Response Generation]
+    end
+    
+    A --> B1
+    A --> B2
+    B1_2 --> C2
+    B2_2 --> C2
+    C3 --> D1
+    D6 --> E1
+    D6 --> E2
+    D6 --> E3
+    E5 --> F1
+    E5 --> F2
+    E5 --> F3
+    F3 --> F4
+    
+    %% Technology stack highlights
+    classDef nvidia fill:#76B900,color:white
+    classDef arango fill:#5063F0,color:white
+    classDef langchain fill:#00A67E,color:white
+    
+    class B1_1,B2_1,B2_2,D5,D6,F2 nvidia
+    class C1,C2,C3,D4,F1 arango
+    class D1,D2,D3,F3,F4 langchain

@@ -1,0 +1,152 @@
+# CursorRules for GraphRAG Implementation
+
+## SYSTEM_CONTEXT
+You are a senior developer working on a GPU-accelerated GraphRAG system for image content analysis using ArangoDB, NetworkX, NVIDIA cuGraph, and LangChain/LangGraph.
+
+Required file reads on startup:
+- docs/architecture.mermaid: System architecture diagram and component relationships
+- docs/technical.md: Technical specifications and implementation patterns
+
+
+Before making any changes:
+1. Parse and understand system architecture from docs/architecture.mermaid
+2. Check current task context from tasks/tasks.md
+3. Update progress in docs/status.md
+4. Follow technical specifications from docs/technical.md
+
+## File Management Rules
+ON_FILE_CHANGE:
+Required actions after any code changes:
+1. READ docs/architecture.mermaid to verify architectural compliance
+2. UPDATE docs/status.md with:
+   - Current progress
+   - Any new issues encountered
+   - Completed items
+3. VALIDATE changes against docs/technical.md specifications
+
+
+## Code Style and Patterns
+PYTHON_GUIDELINES:
+- Use type hints throughout the codebase
+- Follow PEP8 formatting standards
+- Write unit tests for all public methods
+- Document with docstrings
+- Use GPU acceleration where applicable
+- Ensure proper error handling for GPU resources
+
+CUDA_GUIDELINES:
+- Manage GPU memory explicitly with ResourceHandle
+- Include fallback paths for CPU execution
+- Optimize tensor operations for GPU
+- Include memory profiling in development builds
+
+## Architecture Understanding
+READ_ARCHITECTURE:
+File: docs/architecture.mermaid
+Required parsing:
+1. Load and parse complete Mermaid diagram
+2. Extract and understand:
+   - Module boundaries between ArangoDB, cuGraph, and LangChain
+   - Data flow patterns throughout the pipeline
+   - System interfaces for image processing
+   - Component dependencies and integration points
+3. Validate any changes against architectural constraints
+4. Ensure new code maintains defined separation of concerns
+
+Error handling:
+1. If file not found: STOP and notify user
+2. If diagram parse fails: REQUEST clarification
+3. If architectural violation detected: WARN user
+
+## Task Management
+TASK_WORKFLOW:
+Required files:
+- docs/technical.md: Implementation guidelines
+
+Workflow steps:
+1. READ tasks/tasks.md:
+   - Parse current task requirements
+   - Extract acceptance criteria
+   - Identify dependencies
+
+2. VALIDATE against docs/architecture.mermaid:
+   - Confirm architectural alignment
+   - Check component interactions
+   - Verify GPU resource requirements
+
+3. UPDATE docs/status.md:
+   - Mark task as in-progress
+   - Track completion of sub-tasks
+   - Document any blockers
+   - Report performance metrics
+
+4. IMPLEMENT following TDD:
+   - Create test files first
+   - Implement to pass tests
+   - Update status on test completion
+   - Include performance benchmarks
+
+## GraphRAG Specific Rules
+GRAPHRAG_WORKFLOW:
+1. Entity Extraction Pipeline:
+   - Validate OCR configuration
+   - Check GPU acceleration for image preprocessing
+   - Verify NLP model loading
+   - Test YOLO integration
+
+2. ArangoDB Graph Construction:
+   - Follow batch insertion patterns
+   - Verify index creation
+   - Test graph traversal queries
+   - Ensure proper edge relationship definitions
+
+3. GPU Acceleration Requirements:
+   - Use cuGraph for community detection
+   - Implement proper memory management
+   - Ensure fallback to NetworkX when needed
+   - Profile GPU utilization
+
+4. LangChain Integration:
+   - Validate query decomposition logic
+   - Test ArangoDB connector configuration
+   - Ensure proper error handling
+   - Verify response formatting
+
+## Error Prevention
+VALIDATION_RULES:
+1. Verify type consistency in Python functions
+2. Check for potential None/null values
+3. Validate GPU memory allocation
+4. Ensure proper error handling for:
+   - GPU out-of-memory conditions
+   - ArangoDB connection issues
+   - Invalid image inputs
+   - Malformed queries
+
+## Performance Monitoring
+BENCHMARK_WORKFLOW:
+1. Record baseline metrics:
+   - Query latency for different query types
+   - GPU memory utilization
+   - Precision@K scores
+   - Graph traversal performance
+
+2. Update performance documentation:
+   - Add new benchmark results to docs/performance.md
+   - Compare against previous baselines
+   - Document optimization attempts
+   - Track resource utilization
+
+## Docker and Deployment
+DEPLOYMENT_RULES:
+1. Verify Docker configuration:
+   - NVIDIA container runtime support
+   - ArangoDB volume mapping
+   - Environment variable configuration
+   - Resource allocation
+
+2. Validate deployment scripts:
+   - Test docker-compose.yml
+   - Verify GPU passthrough
+   - Check network configuration
+   - Ensure proper logging setup
