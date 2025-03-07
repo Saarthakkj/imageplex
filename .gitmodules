@@ -1,6 +1,6 @@
 [submodule "sub"]
 	path = sub
 	url = https://github.com/Saarthakkj/imageplex.git
-[submodule "FigureQA-baseline2"]
-	path = FigureQA-baseline2
+[submodule "FigureQA-baseline"]
+	path = FigureQA-baseline
 	url = https://github.com/Saarthakkj/FigureQA-baseline
