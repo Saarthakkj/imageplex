@@ -1,0 +1,35 @@
+docs/
+├── architecture.mermaid
+├── status.md
+├── technical.md
+├── FigureQA-baseline/
+│   ├── backup_dir/
+│   ├── cfg/
+│   ├── data/
+│   ├── FigureQA/
+│   │   └── figureqa-train1-v1.tar.gz
+│   ├── models/
+│   ├── temp_path/
+│   ├── train_dir/
+│   ├── util/
+│   ├── .gitignore
+│   ├── .gitmodules
+│   ├── eval_model_on_figureqa.py
+│   ├── figureqa_dict.json
+│   ├── LICENSE
+│   ├── README.md
+│   ├── requirements.txt
+│   ├── resume_train_model_on_figureqa.py
+│   └── train_model_on_figureqa.py
+├── src/
+│   ├── graphRAG.ipynb
+│   ├── sub/
+│   └── tasks/
+│       └── tasks.md
+├── .cursorrules
+├── .gitignore
+├── .gitmodules
+├── doc.txt
+├── HackathonNotebookTemplate.ipynb
+├── README.md
+└── requirements.txt
